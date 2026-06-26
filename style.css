@@ -364,3 +364,450 @@ a{
     box-shadow:0 15px 40px rgba(0,0,0,.2);
 
 }
+/* ===========================
+        LOVE STORY
+=========================== */
+
+.story{
+
+    background:white;
+
+    text-align:center;
+
+}
+
+.story h2{
+
+    font-size:60px;
+
+    color:#d4af37;
+
+    margin-bottom:30px;
+
+}
+
+.story p{
+
+    max-width:800px;
+
+    margin:auto;
+
+    line-height:2;
+
+    font-size:20px;
+
+}
+
+/* ===========================
+          КАЛЕНДАРЬ
+=========================== */
+
+.calendar-section{
+
+    background:#222;
+
+    color:white;
+
+    text-align:center;
+
+}
+
+.calendar-section h2{
+
+    font-size:55px;
+
+}
+
+.calendar-section h3{
+
+    margin-top:15px;
+
+    color:#d4af37;
+
+    font-size:32px;
+
+}
+
+.calendar{
+
+    max-width:750px;
+
+    margin:60px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:12px;
+
+}
+
+.calendar div{
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.05);
+
+    transition:.3s;
+
+}
+
+.calendar div:hover{
+
+    background:#d4af37;
+
+    color:white;
+
+    transform:scale(1.05);
+
+}
+
+.active-day{
+
+    background:#d4af37 !important;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+          МЕСТО
+=========================== */
+
+.location{
+
+    text-align:center;
+
+    background:url("images/location.jpg") center/cover;
+
+    position:relative;
+
+    color:white;
+
+}
+
+.location::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.location>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.location h2{
+
+    font-size:55px;
+
+}
+
+.location h3{
+
+    font-size:38px;
+
+    margin:20px 0;
+
+}
+
+.location p{
+
+    line-height:2;
+
+    font-size:22px;
+
+}
+
+.location a{
+
+    display:inline-block;
+
+    margin-top:40px;
+
+    padding:16px 40px;
+
+    background:#d4af37;
+
+    color:white;
+
+    border-radius:40px;
+
+    transition:.4s;
+
+}
+
+.location a:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 30px rgba(212,175,55,.4);
+
+}
+
+/* ===========================
+             RSVP
+=========================== */
+
+.rsvp{
+
+    background:white;
+
+    text-align:center;
+
+}
+
+.rsvp h2{
+
+    font-size:50px;
+
+    margin-bottom:50px;
+
+}
+
+.rsvp form{
+
+    max-width:450px;
+
+    margin:auto;
+
+}
+
+.rsvp input{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#f4f4f4;
+
+    margin-bottom:20px;
+
+    font-size:17px;
+
+    outline:none;
+
+}
+
+.rsvp button{
+
+    width:100%;
+
+    margin-bottom:15px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#d4af37;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.rsvp button:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/* ===========================
+            FOOTER
+=========================== */
+
+footer{
+
+    background:#111;
+
+    color:white;
+
+    text-align:center;
+
+    padding:70px 20px;
+
+}
+
+footer h2{
+
+    font-size:48px;
+
+    color:#d4af37;
+
+}
+
+footer p{
+
+    margin-top:15px;
+
+    letter-spacing:4px;
+
+}
+
+/* ===========================
+         LIGHTBOX
+=========================== */
+
+#lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.9);
+
+    z-index:9999;
+
+}
+
+#lightbox img{
+
+    max-width:90%;
+
+    max-height:90%;
+
+    border-radius:20px;
+
+}
+
+/* ===========================
+          АНИМАЦИИ
+=========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes petals{
+
+    from{
+
+        transform:translateY(-100px) rotate(0deg);
+
+    }
+
+    to{
+
+        transform:translateY(110vh) rotate(360deg);
+
+    }
+
+}
+
+/* ===========================
+      АДАПТАЦИЯ
+=========================== */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:52px;
+
+}
+
+.hero h3{
+
+font-size:24px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+}
+
+.timer{
+
+gap:20px;
+
+}
+
+.timer div{
+
+width:90px;
+
+height:90px;
+
+}
+
+.timer span{
+
+font-size:36px;
+
+}
+
+.photos{
+
+grid-template-columns:1fr;
+
+}
+
+.calendar{
+
+gap:6px;
+
+font-size:14px;
+
+}
+
+.calendar div{
+
+padding:12px;
+
+}
+
+section{
+
+padding:70px 20px;
+
+}
+
+}
