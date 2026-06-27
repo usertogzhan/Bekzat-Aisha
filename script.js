@@ -54,7 +54,7 @@ setInterval(() => {
 // УВЕЛИЧЕНИЕ ФОТО
 // ==============================
 
-const images = document.querySelectorAll(".photos img");
+
 
 const lightbox = document.getElementById("lightbox");
 
@@ -174,5 +174,28 @@ document.addEventListener("mousemove", e => {
         dot.remove();
 
     }, 700);
+
+});
+
+
+// ==============================
+// ШТОРЫ
+// ==============================
+
+const curtainWrapper = document.querySelector(".curtain-wrapper");
+const openBtn = document.querySelector(".btn-trigger");
+
+openBtn.addEventListener("click", () => {
+
+    // запускаем музыку
+    music.play().catch(() => {});
+
+    curtainWrapper.classList.add("opened");
+
+    setTimeout(() => {
+
+        curtainWrapper.classList.add("hidden");
+
+    }, 1300);
 
 });
