@@ -240,3 +240,25 @@ openBtn.addEventListener("click", () => {
     }, 1300);
 
 });
+
+
+// ==============================
+// ШТОРЫ
+// ==============================
+
+const curtainWrapper = document.querySelector(".curtain-wrapper");
+const openBtn = document.querySelector(".btn-trigger");
+
+if (curtainWrapper && openBtn) {
+
+    openBtn.addEventListener("click", () => {
+
+        curtainWrapper.classList.add("opened");
+
+        setTimeout(() => {
+            curtainWrapper.classList.add("hidden");
+        }, 1300);
+
+    });
+
+}
