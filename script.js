@@ -5,17 +5,7 @@
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
-musicBtn.addEventListener("click", () => {
 
-    if (music.paused) {
-        music.play();
-        musicBtn.innerHTML = "🔊";
-    } else {
-        music.pause();
-        musicBtn.innerHTML = "🎵";
-    }
-
-});
 
 // ==============================
 // ТАЙМЕР
@@ -60,17 +50,8 @@ const lightbox = document.getElementById("lightbox");
 
 const lightboxImg = document.getElementById("lightboxImg");
 
-images.forEach(img => {
 
-    img.addEventListener("click", () => {
 
-        lightbox.style.display = "flex";
-
-        lightboxImg.src = img.src;
-
-    });
-
-});
 
 lightbox.addEventListener("click", () => {
 
@@ -177,88 +158,48 @@ document.addEventListener("mousemove", e => {
 
 });
 
-
 // ==============================
-// ШТОРЫ
-// ==============================
-
-const curtainWrapper = document.querySelector(".curtain-wrapper");
-const openBtn = document.querySelector(".btn-trigger");
-
-openBtn.addEventListener("click", () => {
-
-    // запускаем музыку
-    music.play().catch(() => {});
-
-    curtainWrapper.classList.add("opened");
-
-    setTimeout(() => {
-
-        curtainWrapper.classList.add("hidden");
-
-    }, 1300);
-
-});
-
-
-// ==============================
-// ШТОРЫ + ЗАПУСК МУЗЫКИ
+// ШТОРЫ + МУЗЫКА
 // ==============================
 
 const curtainWrapper = document.querySelector(".curtain-wrapper");
 const openBtn = document.querySelector(".btn-trigger");
 
-openBtn.addEventListener("click", () => {
-
-    // Запускаем музыку
-    music.volume = 0;
-    music.play().catch(error => {
-        console.log("Музыка не запустилась:", error);
-    });
-
-    // Плавное увеличение громкости
-    let volume = 0;
-
-    const fade = setInterval(() => {
-        volume += 0.05;
-
-        if (volume >= 1) {
-            volume = 1;
-            clearInterval(fade);
-        }
-
-        music.volume = volume;
-
-    }, 100);
-
-    // Открываем шторы
-    curtainWrapper.classList.add("opened");
-
-    // Полностью скрываем шторы
-    setTimeout(() => {
-        curtainWrapper.classList.add("hidden");
-    }, 1300);
-
-});
-
-
-// ==============================
-// ШТОРЫ
-// ==============================
-
-const curtainWrapper = document.querySelector(".curtain-wrapper");
-const openBtn = document.querySelector(".btn-trigger");
-
-if (curtainWrapper && openBtn) {
+if (openBtn && curtainWrapper) {
 
     openBtn.addEventListener("click", () => {
+
+        music.volume = 0;
+
+        music.play().catch(() => {});
+
+        let volume = 0;
+
+        const fade = setInterval(() => {
+
+            volume += 0.05;
+
+            if (volume >= 1) {
+
+                volume = 1;
+
+                clearInterval(fade);
+
+            }
+
+            music.volume = volume;
+
+        }, 100);
 
         curtainWrapper.classList.add("opened");
 
         setTimeout(() => {
+
             curtainWrapper.classList.add("hidden");
+
         }, 1300);
 
     });
 
 }
+
