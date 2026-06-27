@@ -811,3 +811,82 @@ padding:70px 20px;
 }
 
 }
+
+
+/* === ЭФФЕКТ РАЗДВИЖНЫХ ШТОР === */ 
+.curtain-wrapper { 
+        position: fixed; 
+        top: 0; 
+        left: 0;
+        width: 100vw; 
+        height: 100vh; 
+        z-index: 9999; 
+        display: flex; 
+        overflow: hidden; 
+        transition: visibility 1.2s;
+} 
+.curtain-wrapper.hidden { 
+        visibility: hidden;
+        pointer-events: none; 
+} 
+.curtain-side { 
+        width: 50vw; 
+        height: 100vh; 
+        background: linear-gradient(rgba(18, 17, 16, 0.88), rgba(18, 17, 16, 0.88)), 
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat; 
+        position: relative; 
+        transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1); 
+} 
+.curtain-left { transform-origin: left center; } 
+.curtain-right { transform-origin: right center; } 
+.curtain-content { 
+        position: absolute; 
+        width: 100vw; 
+        height: 100vh; 
+        top: 0; 
+        left: 0; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        z-index: 10; 
+        transition: opacity 0.6s ease; 
+} 
+.curtain-content h2 { 
+        font-family: var(--font-title);
+        font-size: 2.6rem; 
+        font-style: italic; 
+        color: #f7f4eb; 
+        text-align: center; 
+        font-weight: 400; 
+        margin-bottom: 40px; 
+        letter-spacing: 1px; 
+        line-height: 1.4; 
+        text-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+} 
+.btn-trigger { 
+        width: 130px; 
+        height: 130px; 
+        background-color: var(--accent-color); 
+        color: #fff; 
+        border: 2px solid rgba(255,255,255,0.4); 
+        border-radius: 50%; 
+        font-family: var(--font-body); 
+        font-size: 0.85rem; 
+        font-weight: 600; 
+        letter-spacing: 2px; 
+        cursor: pointer; 
+        box-shadow: 0 0 30px rgba(179, 151, 116, 0.5); 
+        transition: transform 0.3s, background-color 0.3s; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+} 
+.btn-trigger:hover { 
+        transform: scale(1.05); 
+        background-color: #c5a985; 
+} 
+.curtain-wrapper.opened .curtain-left { transform: translateX(-100%); } 
+.curtain-wrapper.opened .curtain-right { transform: translateX(100%); } 
+.curtain-wrapper.opened .curtain-content { opacity: 0; pointer-events: none; } 
+openBtn.addEventListener('click', () => { curtainWrapper.classList.add('opened');
