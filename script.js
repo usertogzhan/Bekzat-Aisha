@@ -199,3 +199,44 @@ openBtn.addEventListener("click", () => {
     }, 1300);
 
 });
+
+
+// ==============================
+// ШТОРЫ + ЗАПУСК МУЗЫКИ
+// ==============================
+
+const curtainWrapper = document.querySelector(".curtain-wrapper");
+const openBtn = document.querySelector(".btn-trigger");
+
+openBtn.addEventListener("click", () => {
+
+    // Запускаем музыку
+    music.volume = 0;
+    music.play().catch(error => {
+        console.log("Музыка не запустилась:", error);
+    });
+
+    // Плавное увеличение громкости
+    let volume = 0;
+
+    const fade = setInterval(() => {
+        volume += 0.05;
+
+        if (volume >= 1) {
+            volume = 1;
+            clearInterval(fade);
+        }
+
+        music.volume = volume;
+
+    }, 100);
+
+    // Открываем шторы
+    curtainWrapper.classList.add("opened");
+
+    // Полностью скрываем шторы
+    setTimeout(() => {
+        curtainWrapper.classList.add("hidden");
+    }, 1300);
+
+});
