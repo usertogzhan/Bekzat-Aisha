@@ -116,6 +116,46 @@ sections.forEach(section => {
 
 });
 
+const music = document.getElementById("bgMusic");
+
+openBtn.addEventListener('click', () => {
+
+    // Запускаем музыку
+    music.play().catch(err => console.log(err));
+
+    // Плавное увеличение громкости
+    music.volume = 0;
+
+    let volume = 0;
+
+    const fade = setInterval(() => {
+
+        if (volume < 1) {
+
+            volume += 0.02;
+
+            music.volume = volume;
+
+        } else {
+
+            clearInterval(fade);
+
+        }
+
+    }, 80);
+
+    // Открываем шторы
+    curtainWrapper.classList.add('opened');
+
+    // Через время скрываем шторы
+    setTimeout(() => {
+
+        curtainWrapper.classList.add('hidden');
+
+    }, 1300);
+
+});
+
 // ==============================
 // ПАДАЮЩИЕ ЛЕПЕСТКИ
 // ==============================
