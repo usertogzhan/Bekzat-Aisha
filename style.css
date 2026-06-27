@@ -55,7 +55,7 @@ a{
 
     height:100vh;
 
-    background:url("images/hero.jpg") center center/cover;
+    background:url("toi.jpeg") center center/cover;
 
     position:relative;
 
@@ -311,59 +311,9 @@ a{
 
 }
 
-/* ===========================
-         ГАЛЕРЕЯ
-=========================== */
 
-.gallery{
 
-    background:#faf7f2;
 
-    text-align:center;
-
-}
-
-.gallery h2{
-
-    font-size:55px;
-
-    margin-bottom:60px;
-
-}
-
-.photos{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:25px;
-
-    max-width:1000px;
-
-    margin:auto;
-
-}
-
-.photos img{
-
-    width:100%;
-
-    border-radius:20px;
-
-    cursor:pointer;
-
-    transition:.5s;
-
-}
-
-.photos img:hover{
-
-    transform:scale(1.05);
-
-    box-shadow:0 15px 40px rgba(0,0,0,.2);
-
-}
 /* ===========================
         LOVE STORY
 =========================== */
@@ -482,7 +432,7 @@ a{
 
     text-align:center;
 
-    background:url("images/location.jpg") center/cover;
+    background:url("images/location.jpeg") center/cover;
 
     position:relative;
 
