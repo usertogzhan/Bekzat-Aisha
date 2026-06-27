@@ -189,3 +189,74 @@ if (openBtn && curtainWrapper) {
 
 });
 
+// ==============================
+// ОТПРАВКА RSVP В TELEGRAM БОТ
+// ==============================
+
+// ВСТАВЬ СЮДА СВОИ ДАННЫЕ ИЗ ШАГОВ 1 И 2:
+const TG_TOKEN = "8864001789:AAFv_SaVOQ6Rqg7cS50ATiDbaf28zlXv_-o"; 
+const TG_CHAT_ID = "1617844349"; 
+
+const rsvpForm = document.getElementById('rsvpForm');
+const rsvpButtons = document.querySelectorAll('.rsvp-btn');
+const nameInput = document.getElementById('guestName');
+
+rsvpButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const name = nameInput.value.trim();
+
+        // 1. Проверяем, ввёл ли гость имя
+        if (!name) {
+            alert('Өтінеміз, аты-жөніңізді жазыңыз!');
+            nameInput.focus();
+            return;
+        }
+
+        // 2. Получаем выбор (какую кнопку нажали)
+        const choice = this.getAttribute('data-status');
+
+        // 3. Формируем текст сообщения для тебя
+        const message = `🔔 *Жаңа RSVP жауап!*\n\n` +
+                        `👤 *Қонақ:* ${name}\n` +
+                        `💌 *Жауабы:* ${choice}`;
+
+        // Визуальный эффект загрузки на кнопке
+        const originalText = this.textContent;
+        this.textContent = "Жіберілуде...";
+        this.disabled = true;
+
+        // 4. Отправляем запрос в Telegram
+        const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: TG_CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                alert('Рахмет! Жауабыңыз сәтті қабылданды. 🤍');
+                rsvpForm.reset(); // Очищаем поле ввода имени
+            } else {
+                alert('Қателік кетті. Қайтадан байқап көріңіз.');
+                console.error('Ошибка TG:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка сети:', error);
+            alert('Желіде қателік кетті. Интернетті тексеріңіз.');
+        })
+        .finally(() => {
+            // Возвращаем кнопку в исходное состояние
+            this.textContent = originalText;
+            this.disabled = false;
+        });
+    });
+});
