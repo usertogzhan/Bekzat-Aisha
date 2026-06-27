@@ -58,44 +58,33 @@ lightbox.addEventListener("click", () => {
     lightbox.style.display = "none";
 
 });
-
 // ==============================
-// ПЛАВНОЕ ПОЯВЛЕНИЕ
+// ПЛАВНОЕ ПОЯВЛЕНИЕ (ОБНОВЛЕННОЕ)
 // ==============================
 
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
         if (entry.isIntersecting) {
-
             entry.target.style.opacity = "1";
-
             entry.target.style.transform = "translateY(0)";
-
         }
-
     });
-
 }, {
-
     threshold: 0.15
-
 });
 
 sections.forEach(section => {
-
-    section.style.opacity = "0";
-
-    section.style.transform = "translateY(70px)";
-
-    section.style.transition = "1s";
-
-    observer.observe(section);
-
+    // ИСПРАВЛЕНИЕ: Не прячем и не двигаем секцию .hero, чтобы она не ломала скролл
+    if (!section.classList.contains('hero')) {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(70px)";
+        section.style.transition = "1s";
+        observer.observe(section);
+    }
 });
+
 
 
 // ==============================
@@ -156,10 +145,8 @@ document.addEventListener("mousemove", e => {
 
     }, 700);
 
-});
-
 // ==============================
-// ШТОРЫ + МУЗЫКА
+// ШТОРЫ + МУЗЫКА (ОБНОВЛЕННОЕ)
 // ==============================
 
 const curtainWrapper = document.querySelector(".curtain-wrapper");
@@ -170,36 +157,35 @@ if (openBtn && curtainWrapper) {
     openBtn.addEventListener("click", () => {
 
         music.volume = 0;
-
         music.play().catch(() => {});
 
         let volume = 0;
-
         const fade = setInterval(() => {
-
             volume += 0.05;
-
             if (volume >= 1) {
-
                 volume = 1;
-
                 clearInterval(fade);
-
             }
-
             music.volume = volume;
-
         }, 100);
 
+        // 1. Открываем шторы
         curtainWrapper.classList.add("opened");
 
+        // 2. ИСПРАВЛЕНИЕ: Плавно фиксируем экран на второй фотке (.hero)
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+            setTimeout(() => {
+                heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 50); // Минимальная задержка для корректного срабатывания
+        }
+
         setTimeout(() => {
-
             curtainWrapper.classList.add("hidden");
-
         }, 1300);
-
     });
-
 }
+    
+
+});
 
