@@ -2,7 +2,7 @@
 // МУЗЫКА
 // ==============================
 
-const music = document.getElementById("music");
+const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
 musicBtn.addEventListener("click", () => {
